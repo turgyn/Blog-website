@@ -5,9 +5,6 @@ from .models import Post
 from .forms import PostForm
 
 
-# Create your views here.
-
-
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now())
     return render(request, 'blog/post_list.html', {'posts': posts})
@@ -44,4 +41,3 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
-        
