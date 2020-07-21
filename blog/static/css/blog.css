@@ -1,5 +1,5 @@
 .page-header {
-    background-color: #ff9400;
+    background-color: #0f949f;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
 }
@@ -8,6 +8,10 @@
     color: #ffffff;
     font-size: 36pt;
     text-decoration: none;
+}
+
+.page-header p a {
+    color: #cf3020;
 }
 
 .content {
@@ -43,4 +47,8 @@ h1, h2, h3, h4 {
 
 .post h1 a, .post h1 a:visited {
     color: #000000;
+}
+
+.comment {
+    margin: 20px 0px 20px 20px;
 }
