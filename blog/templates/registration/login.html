@@ -16,7 +16,8 @@
             </tr>
 
             <input type="submit" value="login">
-            <input type="hidden" name="text" value="{{ next }}">
+            <input type="hidden" name="next" value="{% url 'post_list' %}">
         </table>
     </form>
+    <p>No account? <a href="{% url 'register' %}">Sign up</a></p>
 {% endblock %}
