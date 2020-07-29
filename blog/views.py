@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
@@ -18,13 +19,20 @@ def detail(request, pk):
 
 
 def register(request):
+    content = dict()
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')
+        else:
+            if request.POST['password1'] != request.POST['password2']:
+               content['error'] = 'Passwords are not same'
+            else:
+                content['error'] = 'Invalid password or username'
     form = UserCreationForm
-    return render(request, 'registration/register.html', {'form': form})
+    content['form'] = form
+    return render(request, 'registration/register.html', content)
 
 
 @login_required

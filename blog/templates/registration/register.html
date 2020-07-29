@@ -1,20 +1,26 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block content %}
-    <div class="mx-5" style="width: 200px">
-        <form method="POST" >
-            {% csrf_token %}
-            <div class="bg-danger">
-                 <input name="username" placeholder="username">
-            </div>
-
-            <div>
-                 <input name="password1" placeholder="password">
-            </div>
-            <div>
-                 <input name="password2" placeholder="confirm password">
-            </div>
-            <input type="submit" class="btn btn-primary" value="Sign in">
+    <div class="form">
+        {% if error %}
+            {{ error }}
+        {% endif %}
+        <h3>Register</h3>
+        <form method="post"> {% csrf_token %}
+            {% for field in form %}
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        {{ field.label }}
+                    </div>
+                    <div class="col-1">
+                        {{ field }}
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn">Submit</button>
+            <input type="hidden" name="next" value="{% url 'post_list' %}">
         </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Sign up</a></p>
     </div>
 {% endblock %}

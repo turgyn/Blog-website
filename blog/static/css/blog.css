@@ -52,3 +52,12 @@ h1, h2, h3, h4 {
 .comment {
     margin: 20px 0px 20px 20px;
 }
+
+.form {
+    margin: 100px auto;
+    width: 300px;
+    border: gray solid thin;
+    border-radius: 5px;
+    padding: 10px;
+    justify-self: center;
+}
